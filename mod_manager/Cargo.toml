@@ -1,9 +1,13 @@
 [package]
 name = "mod_manager"
 version = "0.1.0"
-authors = ["Laura Demkowicz-Duffy <edward70891@gmail.com>"]
+authors = ["Laura Demkowicz-Duffy <fragsoc@yusu.org>"]
 edition = "2018"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
+xml-rs = "0.8.3"
+log = "0.4"
+pretty_env_logger = "0.4"
+structopt = "0.3.14"
