@@ -1,0 +1,13 @@
+version: '3.7'
+
+services:
+  barotrauma:
+    image: barotrauma
+    volumes:
+      - ./mods:/mods
+      - ./saves:/saves
+      - ./config:/config
+    ports:
+      - 27015:27015/udp
+      - 27016:27016/udp
+    build: .
