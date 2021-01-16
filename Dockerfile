@@ -60,6 +60,9 @@ RUN mv $INSTALL_LOC/Mods $MODS_LOC && \
 RUN mkdir -p "$INSTALL_LOC/Daedalic Entertainment GmbH" $SAVES_LOC && \
     ln -s $SAVES_LOC "$INSTALL_LOC/Daedalic Entertainment GmbH/Barotrauma"
 
+# Setup ServerLogs folder
+RUN mkdir -p "$INSTALL_LOC/ServerLogs"
+
 # Set directory permissions
 RUN chown -R barotrauma:barotrauma \
     $CONFIG_LOC $INSTALL_LOC $MODS_LOC $SAVES_LOC

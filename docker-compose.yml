@@ -8,6 +8,7 @@ services:
       - ./saves:/saves
       - ./config:/config
       - logs:/barotrauma/.steam/logs:rw
+      - serverLogs:/barotrauma/ServerLogs:rw
     ports:
       - 27015:27015/udp
       - 27016:27016/udp
@@ -23,10 +24,12 @@ services:
     volumes:
       - ./nginx-logs/default.conf:/etc/nginx/conf.d/default.conf:ro
       - ./nginx-logs/htpasswd:/htpasswd:ro
-      - "logs:/html:ro"
+      - "logs:/html/logs:ro"
+      - "serverLogs:/html/serverLogs:ro"
 
 volumes:
   logs:
+  serverLogs:
 
 networks:
   reverse_proxy:
