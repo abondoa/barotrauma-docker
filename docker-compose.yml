@@ -7,7 +7,29 @@ services:
       - ./mods:/mods
       - ./saves:/saves
       - ./config:/config
+      - logs:/barotrauma/.steam/logs:rw
     ports:
       - 27015:27015/udp
       - 27016:27016/udp
     build: .
+  logs-web:
+    image: nginx:alpine
+    environment:
+      - VIRTUAL_HOST=logs.gamequest.dk
+      - LETSENCRYPT_HOST=logs.gamequest.dk
+      - LETSENCRYPT_EMAIL=abondoa@gmail.com
+    networks:
+      - reverse_proxy
+    volumes:
+      - ./nginx-logs/default.conf:/etc/nginx/conf.d/default.conf:ro
+      - ./nginx-logs/htpasswd:/htpasswd:ro
+      - "logs:/html:ro"
+
+volumes:
+  logs:
+
+networks:
+  reverse_proxy:
+    external:
+      name: reverse_proxy
+
